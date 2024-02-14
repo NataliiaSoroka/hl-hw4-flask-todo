@@ -8,3 +8,6 @@ python3 -m pip install -r requirements.txt
 flask db upgrade
 flask run
 ```
+## Demo
+
+![QFifIyAR](https://github.com/NataliiaSoroka/hl-hw4-flask-todo/assets/33627946/5084155f-7b86-40de-af45-d5076d36a278)
