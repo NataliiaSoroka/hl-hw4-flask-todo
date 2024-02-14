@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ title }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="h-full">
+  <div class="text-black bg-gray-200 rounded p-10">
+    <form action="/todo/add" method="post" class="flex items-center">
+      {{ form.hidden_tag() }}
+      <div class="w-96">
+        {{ form.title(placeholder="Title", class="pl-5 h-9 bg-transparent border border-gray-300 w-full rounded-md text-sm") }}
+      </div>
+      <div class="ml-6 ">
+        {{ form.submit(class="h-8 px-3 w-full rounded-md shadow text-white bg-blue-500") }}
+      </div>
+    </form>
+  </div>
+
+  <div class="text-black bg-gray-200 rounded p-10 mt-6">
+    {% if todos %}
+    <ul class="grid grid-cols-1 divide-y">
+        {% for todo in todos %}
+            <li class="py-3 flex items-center border-gray-500	">
+              <a href="/todo/update/{{ todo.id }}" class="flex-none pr-6 text-xl">
+                {% if todo.checked == False %}
+                  <i class="lar la-circle"></i>
+                {% else %}
+                 <i class="lar la-check-circle text-lime-700"></i>
+                {% endif %}
+              </a>
+              <div class="grow">{{ todo.title }}</div>
+              <a href="/todo/delete/{{ todo.id }}" class="flex-none">
+                <i class="text-xl las la-trash text-red-600"></i>
+              </a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

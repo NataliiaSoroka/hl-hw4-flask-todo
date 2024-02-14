@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ title }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="h-full flex items-center justify-center">
+  <div class="w-3/5 h-2/3 text-black bg-gray-200 rounded p-10 flex flex-col items-center justify-center">
+    <div class="text-3xl text-center pb-5">
+      Introduce yourself, please
+    </div>
+    <form action="/login" method="post" class="w-3/4">
+      {{ form.hidden_tag() }}
+      <div class="w-full pb-3">
+        {{ form.name.label }}
+      </div>
+      <div class="w-full pb-3">
+        {{ form.name(placeholder="Your name", class="pl-5 h-9 bg-transparent border border-gray-300 w-full rounded-md text-sm") }}
+      </div>
+      <div class="w-full">
+        {{ form.submit(class="h-8 px-3 w-full rounded-md shadow text-white bg-blue-500") }}
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
